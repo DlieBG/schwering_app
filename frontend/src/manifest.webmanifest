@@ -1,0 +1,16 @@
+{
+  "name": "Schwering App",
+  "short_name": "Schwering",
+  "theme_color": "#000",
+  "background_color": "#000",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/logo.png",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

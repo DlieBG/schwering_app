@@ -1,0 +1,21 @@
+.toolbar {
+    border-bottom: 1px solid #333;
+}
+
+.menu {
+    margin-right: .5em;
+}
+
+.home:hover {
+    background-color: #353535;
+    border-radius: 4px;
+    box-shadow: 0 0 0 6px #353535;
+}
+
+.arrow {
+    vertical-align: middle;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

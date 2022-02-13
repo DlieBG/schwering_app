@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  frontend:
+    build: frontend
+    container_name: schwering_app_frontend
+    ports:
+      - 80:80
+    networks:
+      macvlan:
+        ipv4_address: 10.16.1.1
+
+networks:
+  macvlan:
+    driver: macvlan
+    driver_opts:
+      parent: enp5s0
+    ipam:
+      config:
+        - subnet: 10.16.0.0/16
+          gateway: 10.16.0.1
+          
