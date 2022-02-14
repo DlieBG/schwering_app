@@ -2,16 +2,16 @@
     <button mat-icon-button class="menu" (click)="drawer.open()">
         <mat-icon>menu</mat-icon>
     </button>
+
     <span class="home" routerLink="/">
         Schwering App
     </span>
-    <span>
+
+    <span class="title" *ngIf="title != ''">
         <mat-icon class="arrow">keyboard_arrow_right</mat-icon>
-        Klima
+        {{ title }}
     </span>
+
     <span class="spacer"></span>
-    <button mat-icon-button routerLink="user">
-        <mat-icon>account_circle</mat-icon>
-    </button>
 </mat-toolbar>
   

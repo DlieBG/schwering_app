@@ -6,14 +6,23 @@
     margin-right: .5em;
 }
 
+.home {
+    color: rgb(132, 175, 255);
+}
+
 .home:hover {
     background-color: #353535;
     border-radius: 4px;
     box-shadow: 0 0 0 6px #353535;
 }
 
+.title {
+    color: rgb(255, 132, 132);
+}
+
 .arrow {
     vertical-align: middle;
+    color: #fdbc7b;
 }
 
 .spacer {

@@ -1,0 +1,9 @@
+<mat-form-field appearance="legacy">
+    <mat-label>Legacy form field</mat-label>
+    <input matInput [(ngModel)]="pin">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+</mat-form-field>
+
+{{pin}}
+
+<button mat-button (click)="login()">Login</button>

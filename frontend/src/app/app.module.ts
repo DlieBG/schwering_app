@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +18,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { SidenavComponent } from './components/navigation/sidenav/sidenav.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { UserComponent } from './components/user/user/user.component';
-import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { UserComponent } from './components/login/user/user.component';
+import { DashboardComponent } from './components/app/dashboard/dashboard.component';
+import { AuthenticationInterceptor } from './interceptors/authentication/authentication.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,8 +50,11 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatListModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
