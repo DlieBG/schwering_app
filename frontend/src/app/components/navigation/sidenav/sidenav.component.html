@@ -1,27 +1,38 @@
 <mat-selection-list [multiple]="false">
-    <div mat-subheader>Home</div>
-    <mat-list-option routerLink="/" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon mat-list-icon>dashboard</mat-icon>
-        <div mat-line>Dashboard</div>
-        <div mat-line>Übersicht über alle Apps</div>
-    </mat-list-option>
-
-    <mat-divider></mat-divider>
-
-    <div mat-subheader>Apps</div>
-    <mat-list-option *ngFor="let app of apps;" [routerLink]="['/app', app.appId]" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon mat-list-icon>{{ app.icon }}</mat-icon>
-        <div mat-line>{{ app.name }}</div>
-        <div mat-line>{{ app.description }}</div>
-    </mat-list-option>
-
-    <mat-divider></mat-divider>
-
-    <div mat-subheader>Einstellungen</div>
-    <mat-list-option routerLink="/user" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon mat-list-icon>account_circle</mat-icon>
-        <div mat-line>Benutzer</div>
-        <div mat-line *ngIf="loginJwt">{{ loginJwt.name }}</div>
-    </mat-list-option>
+    <div *ngIf="loginJwt">
+        <div mat-subheader>Home</div>
+        <mat-list-option (click)="drawer.close()" routerLink="/" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon mat-list-icon>dashboard</mat-icon>
+            <div mat-line>Dashboard</div>
+            <div mat-line>Übersicht über alle Apps</div>
+        </mat-list-option>
+    
+        <mat-divider></mat-divider>
+    
+        <div mat-subheader>Apps</div>
+        <mat-list-option *ngFor="let app of apps;" (click)="drawer.close()" [routerLink]="['/app', app.appId]" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon mat-list-icon>{{ app.icon }}</mat-icon>
+            <div mat-line>{{ app.name }}</div>
+            <div mat-line>{{ app.description }}</div>
+        </mat-list-option>
+    
+        <mat-divider></mat-divider>
+    
+        <div mat-subheader>Einstellungen</div>
+        <mat-list-option routerLink="/user" (click)="drawer.close()" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <div mat-line>Benutzer</div>
+            <div mat-line *ngIf="loginJwt">{{ loginJwt.name }}</div>
+        </mat-list-option>
+    </div>
+    <div *ngIf="!loginJwt">
+        <div mat-subheader>Login</div>
+        <mat-list-option routerLink="/login" (click)="drawer.close()" routerLinkActive="mat-list-single-selected-option" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <div mat-line>Login</div>
+            <div mat-line *ngIf="loginJwt"></div>
+        </mat-list-option>
+    </div>
+    
 </mat-selection-list>
   

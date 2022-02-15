@@ -21,6 +21,7 @@ import { SidenavComponent } from './components/navigation/sidenav/sidenav.compon
 import { LoginComponent } from './components/login/login/login.component';
 import { UserComponent } from './components/login/user/user.component';
 import { DashboardComponent } from './components/app/dashboard/dashboard.component';
+import { AppComponent as ShowAppComponent } from './components/app/app/app.component';
 import { AuthenticationInterceptor } from './interceptors/authentication/authentication.interceptor';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AuthenticationInterceptor } from './interceptors/authentication/authent
     SidenavComponent,
     LoginComponent,
     UserComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShowAppComponent
   ],
   imports: [
     FormsModule,

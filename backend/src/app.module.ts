@@ -15,7 +15,8 @@ import { DbService } from './services/db/db.service';
   ],
   controllers: [
     AppController,
-    LoginController],
+    LoginController
+  ],
   providers: [
     DbService
   ],

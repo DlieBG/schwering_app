@@ -8,7 +8,6 @@ import { LoginService } from "src/app/services/login/login.service";
 export class AuthenticationInterceptor implements HttpInterceptor {
 
     constructor(
-        private router: Router,
         private loginService: LoginService
     ) { }
 
@@ -27,7 +26,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
                     (error) => {
                         if(error.status === 401) {
                             this.loginService.resetJwt();
-                            this.router.navigate(['/login']);
                         }
 
                         throw error;

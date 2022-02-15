@@ -1,1 +1,11 @@
-<p>user works!</p>
+<div class="body">
+    <div class="container">
+        <div class="card">
+            <h2>Hallo <span class="name">{{ loginJwt.name }}</span>!</h2>
+            <p>
+                Deine aktuellen Zugangsdaten lauten:
+            </p>
+            <pre>{{ loginJwt | json }}</pre>
+        </div>
+    </div>
+</div>

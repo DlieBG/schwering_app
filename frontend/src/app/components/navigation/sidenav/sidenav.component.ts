@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { Observable } from 'rxjs';
 import { LoginJwt } from 'src/app/types/login.type';
 import { App } from 'src/app/types/app.type';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,6 +12,8 @@ import { App } from 'src/app/types/app.type';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+
+  @Input() drawer!: MatDrawer;
 
   loginJwt$!: Observable<LoginJwt>;
   loginJwt!: LoginJwt;
@@ -26,6 +29,11 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.getLoginJwt();
     this.getApps();
+
+    this.loginService.update.subscribe(() => {
+      this.getLoginJwt();
+      this.getApps();
+    });
   }
 
   getLoginJwt() {

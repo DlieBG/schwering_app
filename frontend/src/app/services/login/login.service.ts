@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { LoginDto, LoginJwt } from 'src/app/types/login.type';
 import { environment } from 'src/environments/environment';
 
@@ -9,6 +10,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
+
+  update: Subject<void> = new Subject();
 
   constructor(
     private router: Router,
@@ -30,10 +33,12 @@ export class LoginService {
 
   setJwt(jwt: string) {
     localStorage.setItem('schwering_app_jwt', jwt);
+    this.update.next();
   }
 
   resetJwt() {
     localStorage.removeItem('schwering_app_jwt');
+    this.router.navigate(['/login']);
   }
 
   getLoginJwt(): Observable<LoginJwt> {

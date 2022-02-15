@@ -49,8 +49,8 @@ export class AppController {
         
         let user = await userCollection.findOne({ _id: new ObjectId(loginJwt.id) }); 
         
-        if(appId in user.apps) {
-            let app = await appCollection.find({ appId });
+        if(user.apps.indexOf(appId) > -1) {
+            let app = await appCollection.findOne({ appId });
 
             return {
                 appId: app['appId'],

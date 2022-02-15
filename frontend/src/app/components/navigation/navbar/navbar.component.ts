@@ -15,8 +15,7 @@ export class NavbarComponent implements OnInit {
   title: string = '';
 
   constructor(
-    private titleService: TitleService,
-    public loginService: LoginService
+    private titleService: TitleService
   ) { }
 
   ngOnInit(): void {
