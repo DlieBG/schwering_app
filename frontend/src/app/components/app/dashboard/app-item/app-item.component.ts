@@ -20,7 +20,7 @@ export class AppItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.iframe.nativeElement.src = this.app.url;
+    this.iframe.nativeElement.src = this.app.widgetUrl;
   }
 
   loaded() {
