@@ -5,4 +5,5 @@ export interface App {
     description: string;
     icon: string;
     url: string;
+    widgetUrl: string;
 }

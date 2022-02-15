@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -16,11 +16,12 @@ export class AppComponent implements OnInit {
   app$!: Observable<App>;
   app!: App;
 
-  url!: SafeResourceUrl;
+  loading: boolean = true;
+
+  @ViewChild('iframe', { static: true }) iframe: any;
 
   constructor(
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer,
     private titleService: TitleService,
     private appService: AppService
   ) { }
@@ -36,10 +37,15 @@ export class AppComponent implements OnInit {
     this.app$.subscribe({
       next: (app: App) => {
         this.app = app;
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(app.url);
+        this.iframe.nativeElement.src = app.url;
         this.titleService.setAppName(app.shortName);
       }
     });
+  }
+
+  loaded() {
+    if(this.iframe.nativeElement.src)
+      this.loading = false;
   }
 
 }

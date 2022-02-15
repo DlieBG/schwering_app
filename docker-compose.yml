@@ -10,6 +10,11 @@ services:
       macvlan:
         ipv4_address: 10.16.1.1
 
+  backend:
+    build: backend
+    container_name: schwering_app_backend
+    env_file: .env
+
 networks:
   macvlan:
     driver: macvlan

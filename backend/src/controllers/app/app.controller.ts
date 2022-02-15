@@ -28,7 +28,7 @@ export class AppController {
         let appCollection = await this.dbService.getCollection('apps');
         
         let user = await userCollection.findOne({ _id: new ObjectId(loginJwt.id) }); 
-        let apps = await appCollection.find({ appId: { $in: user.apps } }).toArray();
+        let apps = await appCollection.find({ appId: { $in: user.apps } }).sort({ sort: 1 }).toArray();
 
         return apps as any as  App[];
     }
@@ -58,7 +58,8 @@ export class AppController {
                 shortName: app['shortName'],
                 description: app['description'],
                 icon: app['icon'],
-                url: app['url']
+                url: app['url'],
+                widgetUrl: app['widgetUrl']
             };
         } else {
             throw new ForbiddenException();

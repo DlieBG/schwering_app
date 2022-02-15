@@ -1,3 +1,5 @@
+import { SafeResourceUrl } from "@angular/platform-browser";
+
 export interface App {
     appId: string;
     name: string;
@@ -5,4 +7,5 @@ export interface App {
     description: string;
     icon: string;
     url: string;
+    widgetUrl: string;
 }

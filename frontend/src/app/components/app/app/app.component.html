@@ -1,3 +1,4 @@
-<div class="body" *ngIf="app">
-    <iframe [src]="url"></iframe>
+<div class="body">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <iframe (load)="loaded()" [hidden]="loading" #iframe></iframe>
 </div>

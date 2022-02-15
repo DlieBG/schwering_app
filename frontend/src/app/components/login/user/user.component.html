@@ -6,6 +6,7 @@
                 Deine aktuellen Zugangsdaten lauten:
             </p>
             <pre>{{ loginJwt | json }}</pre>
+            <button mat-raised-button (click)="logout()">Abmelden</button>
         </div>
     </div>
 </div>

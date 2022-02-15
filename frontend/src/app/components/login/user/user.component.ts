@@ -33,4 +33,8 @@ export class UserComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.loginService.resetJwt();
+  }
+
 }

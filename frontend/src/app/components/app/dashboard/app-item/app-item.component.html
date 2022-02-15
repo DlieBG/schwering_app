@@ -1,0 +1,17 @@
+<div class="card" (click)="openApp()">
+
+    <div class="widget" [class.loaded]="!loading" [hidden]="!app.widgetUrl">
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+        <iframe (load)="loaded()" [hidden]="loading" #iframe></iframe>
+    </div>
+
+    <div>
+        <h2>
+            {{ app.name }}
+            <mat-icon>{{ app.icon }}</mat-icon>
+        </h2>
+
+        <p>{{ app.description }}</p>
+    </div>
+
+</div>

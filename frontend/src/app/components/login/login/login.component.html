@@ -2,15 +2,19 @@
     <div class="container">
         <div class="card">
             <h2>Willkommen in der Schwering App!</h2>
+
             <p>
                 Bitte gib deinen Zugangscode ein, um dich anzumelden. Den Code bekommst du von Benedikt.
             </p>
+
             <mat-form-field appearance="legacy">
                 <mat-label>Zugangscode</mat-label>
-                <input matInput [(ngModel)]="pin" type="password">
+                <input matInput [(ngModel)]="pin" (keydown.enter)="login()" type="password" pattern="[0-9]*" inputmode="numeric">
                 <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
+
             <button mat-stroked-button class="login" (click)="login()">Einloggen</button>
+
             <p class="error" *ngIf="error">
                 Fehler! Der Zugangsode ist falsch!
             </p>
