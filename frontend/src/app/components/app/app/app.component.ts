@@ -29,20 +29,15 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.loading = true;
-
-      // Firefox
-      if(eval(`typeof InstallTrigger !== 'undefined'`)) {
-        this.iframe.nativeElement.src = undefined;
-        console.log("Firefox")
-      }
-      else 
+    this.route.params.subscribe(
+      (params) => {
+        this.loading = true;
         this.iframe.nativeElement.src += '';
 
-      if(params['appId'])
-        this.getApp(params['appId']);
-    });
+        if(params['appId'])
+          this.getApp(params['appId']);
+      }
+    );
   }
 
   getApp(appId: string) {
