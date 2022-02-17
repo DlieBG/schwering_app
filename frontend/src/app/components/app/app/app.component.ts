@@ -33,8 +33,10 @@ export class AppComponent implements OnInit {
       this.loading = true;
 
       // Firefox
-      if(eval(`typeof InstallTrigger !== 'undefined'`)) 
+      if(eval(`typeof InstallTrigger !== 'undefined'`)) {
         this.iframe.nativeElement.src = undefined;
+        console.log("Firefox")
+      }
       else 
         this.iframe.nativeElement.src += '';
 

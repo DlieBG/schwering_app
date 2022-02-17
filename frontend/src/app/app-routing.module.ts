@@ -7,9 +7,10 @@ import { UserComponent } from './components/login/user/user.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'app/:appId', component: AppComponent },
+  { path: 'app', children: [ { path: ':appId', component: AppComponent } ] },
   { path: 'user', component: UserComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
