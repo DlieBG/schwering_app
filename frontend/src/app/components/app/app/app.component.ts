@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
       else 
         this.iframe.nativeElement.src += '';
 
-      this.getApp(params['appId']);
+      if(params['appId'])
+        this.getApp(params['appId']);
     });
   }
 
