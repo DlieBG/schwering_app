@@ -22,7 +22,8 @@ export class AppItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.iframe.nativeElement.src = `${this.app.widgetUrl}?jwt=${this.loginService.getJwt()}`;
+    if(this.app.widgetUrl && this.app.widgetUrl != '')
+      this.iframe.nativeElement.src = `${this.app.widgetUrl}?jwt=${this.loginService.getJwt()}`;
   }
 
   loaded() {
