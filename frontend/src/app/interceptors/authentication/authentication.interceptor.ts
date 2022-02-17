@@ -21,7 +21,8 @@ export class AuthenticationInterceptor implements HttpInterceptor {
                         }
                     }
                 )
-            ).pipe(
+            )
+            .pipe(
                 catchError(
                     (error) => {
                         if(error.status === 401) {

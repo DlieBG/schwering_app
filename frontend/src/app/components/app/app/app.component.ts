@@ -29,7 +29,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.loading = true;
-      this.iframe.nativeElement.src = null;
+
+      // Firefox
+      if(eval(`typeof InstallTrigger !== 'undefined'`)) 
+        this.iframe.nativeElement.src = undefined;
+      else 
+        this.iframe.nativeElement.src += '';
+
       this.getApp(params['appId']);
     });
   }
@@ -46,7 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   loaded() {
-    if(this.iframe.nativeElement.src)
+    if(this.iframe.nativeElement.src && this.iframe.nativeElement.src != '')
       this.loading = false;
   }
 
