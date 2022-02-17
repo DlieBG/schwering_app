@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.loading = true;
-      this.iframe.nativeElement.src = '';
+      this.iframe.nativeElement.src = null;
       this.getApp(params['appId']);
     });
   }
