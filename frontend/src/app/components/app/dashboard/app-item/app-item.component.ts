@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 import { App } from 'src/app/types/app.type';
 
 @Component({
@@ -16,11 +17,12 @@ export class AppItemComponent implements OnInit {
   @ViewChild('iframe', { static: true }) iframe: any;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
-    this.iframe.nativeElement.src = this.app.widgetUrl;
+    this.iframe.nativeElement.src = `${this.app.widgetUrl}?jwt=${this.loginService.getJwt()}`;
   }
 
   loaded() {
