@@ -11,10 +11,8 @@ export class DbService {
         this.client.connect();
     }
 
-    async getCollection(collectionName: string): Promise<Collection> {
-        let client = new MongoClient(process.env.MONGO_URI);
-        await client.connect();
-        return client.db(process.env.MONGO_DB_NAME).collection(collectionName);
+    getCollection(collectionName: string): Collection {
+        return this.client.db(process.env.MONGO_DB_NAME).collection(collectionName);
     }
 
 }
