@@ -1,7 +1,7 @@
 <mat-progress-bar mode="indeterminate" *ngIf="!(loginJwt && apps)"></mat-progress-bar>
 <div class="body" *ngIf="loginJwt && apps">
     <div class="content">
-        <h1>Hallo {{ loginJwt.name }}!</h1>
+        <h1>Hey <span class="name">{{ loginJwt.name }}</span></h1>
     
         <div class="list">
             <app-app-item class="app" *ngFor="let app of apps;" [app]="app"></app-app-item>
