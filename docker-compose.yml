@@ -2,7 +2,8 @@ version: '3'
 
 services:
   frontend:
-    build: frontend
+    # build: frontend
+    image: docker pull ghcr.io/dliebg/schwering_app/frontend
     container_name: schwering_app_frontend
     restart: unless-stopped
     ports:
@@ -13,7 +14,8 @@ services:
       default:
 
   backend:
-    build: backend
+    # build: backend
+    image: docker pull ghcr.io/dliebg/schwering_app/backend
     container_name: schwering_app_backend
     restart: unless-stopped
     env_file: .env
