@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { DashboardComponent } from './components/app/dashboard/dashboard.compone
 import { AppComponent as ShowAppComponent } from './components/app/app/app.component';
 import { AuthenticationInterceptor } from './interceptors/authentication/authentication.interceptor';
 import { AppItemComponent } from './components/app/dashboard/app-item/app-item.component';
+import { JokeComponent } from './components/utils/joke/joke.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AppItemComponent } from './components/app/dashboard/app-item/app-item.c
     UserComponent,
     DashboardComponent,
     ShowAppComponent,
-    AppItemComponent
+    AppItemComponent,
+    JokeComponent
   ],
   imports: [
     FormsModule,
@@ -57,6 +60,7 @@ import { AppItemComponent } from './components/app/dashboard/app-item/app-item.c
     MatSidenavModule,
     MatListModule,
     MatProgressBarModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
