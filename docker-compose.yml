@@ -25,7 +25,7 @@ services:
     container_name: watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: schwering_app_frontend schwering_app_backend
+    command: schwering_app_frontend schwering_app_backend -i 3600
 
 networks:
   macvlan:
