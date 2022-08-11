@@ -20,6 +20,13 @@ services:
     restart: unless-stopped
     env_file: .env
 
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: schwering_app_frontend schwering_app_backend
+
 networks:
   macvlan:
     driver: macvlan
