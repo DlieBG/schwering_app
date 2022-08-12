@@ -2,7 +2,6 @@ version: '3'
 
 services:
   frontend:
-    # build: frontend
     image: ghcr.io/dliebg/schwering_app/frontend:main
     container_name: schwering_app_frontend
     restart: unless-stopped
@@ -12,20 +11,25 @@ services:
       macvlan:
         ipv4_address: 10.16.1.1
       default:
+    labels:
+      - "com.centurylinklabs.watchtower.scope=schwering_app"
 
   backend:
-    # build: backend
     image: ghcr.io/dliebg/schwering_app/backend:main
     container_name: schwering_app_backend
     restart: unless-stopped
     env_file: .env
+    labels:
+      - "com.centurylinklabs.watchtower.scope=schwering_app"
 
   watchtower:
     image: containrrr/watchtower:latest-dev
     container_name: schwering_app_watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: schwering_app_frontend schwering_app_backend -i 3600
+    command: schwering_app_frontend schwering_app_backend -i 3600 --scope schwering_app
+    labels:
+      - "com.centurylinklabs.watchtower.scope=schwering_app"
 
 networks:
   macvlan:
