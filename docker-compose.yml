@@ -22,14 +22,14 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.scope=schwering_app"
 
-  watchtower:
-    image: containrrr/watchtower:latest-dev
-    container_name: schwering_app_watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: schwering_app_frontend schwering_app_backend -i 3600 --scope schwering_app
-    labels:
-      - "com.centurylinklabs.watchtower.scope=schwering_app"
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   container_name: schwering_app_watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: schwering_app_frontend schwering_app_backend -i 3600 --scope schwering_app
+  #   labels:
+  #     - "com.centurylinklabs.watchtower.scope=schwering_app"
 
 networks:
   macvlan:
